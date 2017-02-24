@@ -1,0 +1,14 @@
+{{ asset_add("scripts.js","haeflimi.field_type.igdb::js/input.js") }}
+{{ asset_add("scripts.js","anomaly.field_type.multiple::js/select2.min.js") }}
+{{ asset_add("styles.css","anomaly.field_type.multiple::less/select2.less") }}
+{{ asset_add("styles.css","haeflimi.field_type.igdb::less/select2fix.less") }}
+<input
+        type="text"
+        class="form-control igdb-game-select"
+        value="{{ field_type.value }}"
+        name="{{ field_type.input_name }}"
+        data-mashapeKey="{{ config('services.mashape.key') }}"
+        data-placeholder="{{ trans(field_type.placeholder) }}"
+        {{ field_type.disabled ? 'disabled' }}
+        {{ field_type.readonly ? 'readonly' }}>
+</input>

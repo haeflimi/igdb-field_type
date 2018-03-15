@@ -23,7 +23,7 @@ class IgdbFieldType extends FieldType
 
     public function __construct()
     {
-        $this->igdbConnection = new IGDB(Config::get('igdb.KEY'));
+        $this->igdbConnection = new IGDB(Config::get('igdb.key'), Config::get('igdb.url'));
     }
 
     /**

@@ -1,9 +1,9 @@
 <?php namespace Haeflimi\IgdbFieldType;
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
-use Illuminate\Support\Facades\Config;
 use Messerli90\IGDB\IGDB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class IgdbGamesFieldType
@@ -23,7 +23,9 @@ class IgdbFieldType extends FieldType
 
     public function __construct()
     {
-        $this->igdbConnection = new IGDB(Config::get('igdb.key'), Config::get('igdb.url'));
+        $key = (Config::get('haeflimi.field_type.igdb::config.settings.api_key'))? Config::get('haeflimi.field_type.igdb::config.settings.api_key') : Config::get('igdb.key') ;
+        $url = (Config::get('haeflimi.field_type.igdb::config.settings.api_url'))? Config::get('haeflimi.field_type.igdb::config.settings.api_url') : Config::get('igdb.url') ;
+        $this->igdbConnection = new IGDB($key, $url);
     }
 
     /**

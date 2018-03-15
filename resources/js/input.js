@@ -1,6 +1,11 @@
 $(document).on('ajaxComplete ready', function () {
     // Initialize game Inputs.
     $('input.igdb-game-select:not([data-initialized])').each(function () {
+        $(this).attr('data-initialized', '');
+        new Choices($(this));
+        console.log('test');
+
+        /*
         $(this)
             .attr('data-initialized', '')
             .select2({
@@ -24,7 +29,7 @@ $(document).on('ajaxComplete ready', function () {
                 formatResult: formatGame,
                 formatSelection: formatGameSelection,
                 escapeMarkup: function (m) { return m; }
-            });
+            });*/
     });
 });
 

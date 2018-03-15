@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'       => 'igdb.com - Games',
-    'name'        => 'igdb.com - Games Field Type',
-    'description' => 'A field type to conviniently attach Game Information from igdb.com'
+    'title'       => 'IGDB',
+    'name'        => 'IGDB Field Type',
+    'description' => 'A field type that allows to select a Game from the IGDB Games Database.'
 ];

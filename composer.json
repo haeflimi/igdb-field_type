@@ -1,9 +1,12 @@
 {
-    "name": "haeflimi/igdb-field_type",
+    "name": "haeflimi/igdb-field-type",
     "type": "streams-addon",
-    "description": "A field type to conviniently attach Game Information from igdb.com",
+    "description": "A field type made to conviniently attach Game Information from igdb.com",
     "keywords": [
         "pyrocms addon",
+        "streams field type",
+        "streams addon",
+        "field type",
         "games",
         "addon"
     ],
@@ -12,15 +15,15 @@
     "authors": [
         {
             "name": "Michael Häfliger",
-            "email": "haefliger.michael@bluewin.ch",
+            "email": "tuborg@turicane.ch",
             "role": "Owner"
         }
     ],
     "support": {
-        "email": "support@pyrocms.com"
+        "email": "tuborg@turicane.ch"
     },
     "require" : {
-        "messerli90/igdb": "dev-master"
+        "messerli90/igdb": "~1.0"
     },
     "autoload": {
         "psr-4": {

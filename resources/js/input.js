@@ -14,7 +14,8 @@ $(document).on('ajaxComplete ready', function () {
                             q: term
                         };
                     },
-                    results: function (data, page) { // parse the results into the format expected by Select2.
+                    results: function (data, page) {
+                        // parse the results into the format expected by Select2.
                         // since we are using custom formatting functions we do not need to alter the remote JSON data
                         return { results: data };
                     },

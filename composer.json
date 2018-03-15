@@ -1,5 +1,5 @@
 {
-    "name": "haeflimi/igdb-field-type",
+    "name": "haeflimi/igdb-field_type",
     "type": "streams-addon",
     "description": "A field type made to conviniently attach Game Information from igdb.com",
     "keywords": [
@@ -10,7 +10,7 @@
         "games",
         "addon"
     ],
-    "homepage": "https://github.com/haeflimi/igdb-field-type",
+    "homepage": "https://github.com/haeflimi/igdb-field_type",
     "license": "MIT",
     "authors": [
         {

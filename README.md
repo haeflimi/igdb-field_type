@@ -1,2 +1,2 @@
 # igdb-field-type
-Field Type for Pyrocms that allows to select games from IGDB.com and use the information in streams.
+Field Type for PyroCMS 3 that allows to select/ search Games from IGDB.com, store the information in streams and attach it to other streams.

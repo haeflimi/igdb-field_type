@@ -2,12 +2,12 @@
 {{ asset_add("scripts.js","haeflimi.field_type.igdb::js/choices.min.js") }}
 {{ asset_add("styles.css","haeflimi.field_type.igdb::scss/choices.scss") }}
 
-<select class="igdb-game-select form-control" name="{{ field_type.input_name }}" multiple
-        {{ html_attributes(field_type.attributes) }} type="text" value="preset-1,preset-2" placeholder="Enter something">
+<select class="igdb-game-select form-control" name="{{ field_type.input_name }}" {{ field_type.getMultiple() ? 'multiple' }}
+        {{ html_attributes(field_type.attributes) }} data-deletable="true" type="text" value="preset-1,preset-2" placeholder="{{ trans(field_type.placeholder) }}">
     <optgroup label="In Use">
-        <option>Game A</option>
-        <option>Game B</option>
-        <option>Game C</option>
+        {% for value, option in field_type.getOptions() %}
+            <option value="{{ value }}" {{ value == field_type.key ? 'selected' }}>{{ trans(option) }}</option>
+        {% endfor %}
     </optgroup>
     <optgroup label="IGDB Search">
 

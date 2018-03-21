@@ -2,7 +2,7 @@ $(document).on('ajaxComplete ready', function () {
     // Initialize game Inputs.
     $('select.igdb-game-select:not([data-initialized])').each(function () {
         new Choices('.igdb-game-select',{
-            searchEnabled: true,
+
         });
         $(this).attr('data-initialized', '');
 

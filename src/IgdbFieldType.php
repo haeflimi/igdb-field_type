@@ -1,6 +1,7 @@
 <?php namespace Haeflimi\IgdbFieldType;
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
+use Haeflimi\IgdbFieldType\Game\GameCollection;
 use Messerli90\IGDB\IGDB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Config;
@@ -19,7 +20,7 @@ class IgdbFieldType extends FieldType
      */
     protected $inputView = 'haeflimi.field_type.igdb::input';
     protected $igdbConnection;
-    protected $gameData = null;
+    protected $igdbId;
 
     public function __construct()
     {
@@ -29,32 +30,33 @@ class IgdbFieldType extends FieldType
     }
 
     /**
-     * Get the Game Data Set
+     * Check if the Field is allowed to save multiple entries
      *
-     * @return array|null
+     * @return mixed
      */
-    public function getGameData()
+    public function getMultiple()
     {
-        return $this->gameData;
+        return $this->config('multiple');
     }
 
     /**
-     * Set the Game Data
+     * Get the predetermined options from the games stream
      *
-     * @param  array $colors
-     * @return $this
+     * @return array
      */
-    public function setGameData($id)
+    public function getAllOptions()
     {
-        $this->gameData = array();
-
-        return $this;
+        $games = new GameCollection();
+        $games->sorted('asc')->undecorated();
+        return $games->toArray();
     }
+
 
     /**
      * Search for a Game over the IGDB API
-     *
+     * @param string search Query
      * @return string
+     * @throws \Exception
      */
     public function searchGame($q){
         $list = $this->igdbConnection->searchGames($q,array('id','slug','name','cover','first_release_date'), 5, 0, $order = 'popularity:desc');
@@ -66,6 +68,7 @@ class IgdbFieldType extends FieldType
      *
      * @param $id
      * @return \StdClass
+     * @throws \Exception
      */
     public function getGame($id){
         return $this->igdbConnection->getGame($id);
@@ -76,6 +79,7 @@ class IgdbFieldType extends FieldType
      * Returns JSON for the Games search AJAX Call
      *
      * @return string
+     * @throws \Exception
      */
     public function ajaxSearch(){
         $q = Input::get('q');

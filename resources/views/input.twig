@@ -1,12 +1,42 @@
 {{ asset_add("scripts.js","haeflimi.field_type.igdb::js/input.js") }}
 {{ asset_add("scripts.js","haeflimi.field_type.igdb::js/choices.min.js") }}
 {{ asset_add("styles.css","haeflimi.field_type.igdb::scss/choices.scss") }}
-<input
-        type="text"
-        class="form-control igdb-game-select"
-        value="{{ field_type.value }}"
+
+<select class="igdb-game-select form-control" name="{{ field_type.input_name }}" multiple
+        {{ html_attributes(field_type.attributes) }} type="text" value="preset-1,preset-2" placeholder="Enter something">
+    <optgroup label="In Use">
+        <option>Game A</option>
+        <option>Game B</option>
+        <option>Game C</option>
+    </optgroup>
+    <optgroup label="IGDB Search">
+
+    </optgroup>
+</select>
+
+{#
+
+<select
+        data-search
         name="{{ field_type.input_name }}"
-        data-placeholder="{{ trans(field_type.placeholder) }}"
+        {{ html_attributes(field_type.attributes) }}
         {{ field_type.disabled ? 'disabled' }}
         {{ field_type.readonly ? 'readonly' }}>
-</input>
+
+    {% if field_type.placeholder %}
+        <option value="">{{ trans(field_type.placeholder) }}</option>
+    {% endif %}
+
+    {% for value, option in field_type.options %}
+        {% if option is iterable %}
+            <optgroup label="{{ trans(value) }}">
+                {% for value, option in option %}
+                    <option value="{{ value }}" {{ value == field_type.key ? 'selected' }}>{{ trans(option) }}</option>
+                {% endfor %}
+            </optgroup>
+        {% else %}
+            <option value="{{ value }}" {{ value == field_type.key ? 'selected' }}>{{ trans(option) }}</option>
+        {% endif %}
+    {% endfor %}
+
+</select>#}

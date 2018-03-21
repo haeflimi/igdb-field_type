@@ -1,9 +1,15 @@
 $(document).on('ajaxComplete ready', function () {
     // Initialize game Inputs.
-    $('input.igdb-game-select:not([data-initialized])').each(function () {
+    $('select.igdb-game-select:not([data-initialized])').each(function () {
+        new Choices('.igdb-game-select',{
+            searchEnabled: true,
+        });
         $(this).attr('data-initialized', '');
+
+
+        /*$(this).attr('data-initialized', '');
         new Choices($(this));
-        console.log('test');
+        console.log('test');*/
 
         /*
         $(this)
@@ -32,17 +38,3 @@ $(document).on('ajaxComplete ready', function () {
             });*/
     });
 });
-
-function formatGame (game) {
-    if (game.loading) return game.name;
-    var date = new Date( game.first_release_date );
-    var markup = "<div class='select2-result-repository clearfix'>" +
-        "<div class='select2-result-game-cover'><img src='" + game.cover.url + "' /></div>" +
-        "<div class='select2-result-game-name'><p>" + game.name + "<span class='text-muted'> (" + date.getFullYear() + ")</span></p></div>" +
-        "</div>";
-    return markup;
-}
-
-function formatGameSelection (game) {
-    return game.name;
-}

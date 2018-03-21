@@ -1,6 +1,10 @@
 <?php namespace Haeflimi\IgdbFieldType;
 
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
+use Haeflimi\IgdbFieldType\Game\Contract\GameRepositoryInterface;
+use Haeflimi\IgdbFieldType\Game\GameRepository;
+use Anomaly\Streams\Platform\Model\Igdb\IgdbGamesEntryModel;
+use Haeflimi\IgdbFieldType\Game\GameModel;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -25,11 +29,15 @@ class IgdbFieldTypeServiceProvider extends AddonServiceProvider
 
     protected $aliases = [];
 
-    protected $bindings = [];
+    protected $bindings = [
+        IgdbGamesEntryModel::class => GameModel::class,
+    ];
 
     protected $providers = [];
 
-    protected $singletons = [];
+    protected $singletons = [
+        GameRepositoryInterface::class => GameRepository::class,
+    ];
 
     protected $overrides = [];
 

@@ -74,6 +74,10 @@ class IgdbFieldType extends FieldType
         return $this->igdbConnection->getGame($id);
     }
 
+    public function getOptions(){
+        return [];
+    }
+
 
     /**
      * Returns JSON for the Games search AJAX Call

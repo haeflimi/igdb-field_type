@@ -4,7 +4,6 @@ use Anomaly\Streams\Platform\Database\Seeder\Seeder;
 
 class GameSeeder extends Seeder
 {
-
     /**
      * Run the seeder.
      */
